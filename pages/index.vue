@@ -2,27 +2,37 @@
 const mail = ref("");
 const pass = ref("");
 const loading = ref(false);
+const supabase = useSupabaseClient();
 
 useHead({ title: "Login" });
 
-async function login() {
-  console.log("logging", mail.value, pass.value);
-  loading.value = true;
-  const { data } = await $fetch("/api/login", {
-    method: "post",
-    body: JSON.stringify({
-      mail: mail.value,
-      pass: pass.value,
-    }),
-    headers: useRequestHeaders(),
+const signUp = async () => {
+  const { data, error } = await supabase.auth.signUp({
+    email: mail.value,
+    password: pass.value,
   });
-  loading.value = false;
-  console.log(data);
-  return;
-}
+  if (error) console.log(error);
+};
+
+const signInWithOAuth = async () => {
+  const { error } = await supabase.auth.signInWithOAuth({
+    provider: "github",
+    options: {
+      redirectTo: "http://localhost:3000/confirm",
+    },
+  });
+  if (error) console.log(error);
+};
 </script>
 
 <template>
+  <button
+    class="btn btn-primary"
+    :class="{ loading: loading }"
+    @click="signInWithOAuth"
+  >
+    Github
+  </button>
   <div class="w-80">
     <label class="input input-bordered flex items-center gap-2">
       <svg
@@ -63,7 +73,7 @@ async function login() {
     <button
       class="btn btn-primary"
       :class="{ loading: loading }"
-      @click="login"
+      @click="signUp"
     >
       Login
     </button>
