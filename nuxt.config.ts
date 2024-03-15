@@ -3,10 +3,11 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: ["@nuxtjs/tailwindcss", "@nuxtjs/supabase"],
   supabase: {
+    redirect: false,
     redirectOptions: {
       login: "/login",
       callback: "/confirm",
-      include: undefined,
+      include: [],
       exclude: [],
       cookieRedirect: false,
     },
