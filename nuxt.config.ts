@@ -4,9 +4,9 @@ export default defineNuxtConfig({
   modules: ["@nuxtjs/tailwindcss", "@nuxtjs/supabase"],
   supabase: {
     redirectOptions: {
-      login: "/",
+      login: "/login",
       callback: "/confirm",
-      include: ["/admin(/*)?"],
+      include: undefined,
       exclude: [],
       cookieRedirect: false,
     },

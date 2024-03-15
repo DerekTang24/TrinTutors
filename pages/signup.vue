@@ -4,21 +4,29 @@ const pass = ref("");
 const loading = ref(false);
 const supabase = useSupabaseClient();
 
-useHead({ title: "Login" });
+useHead({ title: "Signup" });
 
 const signUp = async () => {
+  console.log("signup");
   const { data, error } = await supabase.auth.signUp({
     email: mail.value,
     password: pass.value,
+    options: {
+      emailRedirectTo: "http://localhost:3000/",
+    },
   });
   if (error) console.log(error);
+  else {
+    await navigateTo({ path: "/home" });
+  }
+  console.log(data);
 };
 
 const signInWithOAuth = async () => {
   const { error } = await supabase.auth.signInWithOAuth({
     provider: "github",
     options: {
-      redirectTo: "http://localhost:3000/confirm",
+      redirectTo: "http://localhost:3000/",
     },
   });
   if (error) console.log(error);
@@ -70,12 +78,45 @@ const signInWithOAuth = async () => {
         placeholder="Password"
       />
     </label>
+    <div class="form-control">
+      <label class="label cursor-pointer">
+        <span class="label-text">Student</span>
+        <input
+          type="radio"
+          name="radio-10"
+          class="radio checked:bg-blue-500"
+          checked
+        />
+      </label>
+    </div>
+    <div class="form-control">
+      <label class="label cursor-pointer">
+        <span class="label-text">Tutor</span>
+        <input
+          type="radio"
+          name="radio-10"
+          class="radio checked:bg-blue-500"
+          checked
+        />
+      </label>
+    </div>
+    <div class="form-control">
+      <label class="label cursor-pointer">
+        <span class="label-text">Teacher</span>
+        <input
+          type="radio"
+          name="radio-10"
+          class="radio checked:bg-blue-500"
+          checked
+        />
+      </label>
+    </div>
     <button
       class="btn btn-primary"
       :class="{ loading: loading }"
       @click="signUp"
     >
-      Login
+      SignUp
     </button>
   </div>
 </template>
