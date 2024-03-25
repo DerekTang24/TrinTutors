@@ -2,9 +2,6 @@
 const supabase = useSupabaseClient();
 const user = useSupabaseUser();
 console.log(user);
-const user = useCookie("userInfo", {
-  default: () => ({ score: -1 }),
-});
 
 useHead({ title: "Student Home" });
 </script>
