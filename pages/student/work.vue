@@ -12,59 +12,47 @@
     <h5 id="work_list_title2">Ongoing Assignments:</h5>
     <li class="work_point">
       <a class="work_point" href="#"> HW #1</a>
-      <div class="dropdown">
-        <button
-          class="btn btn-secondary btn-sm dropdown-toggle"
-          type="button"
-          id="dropdownMenuButton"
-          data-toggle="dropdown"
-          aria-haspopup="true"
-          aria-expanded="false"
-        >
+      <div class="dropdown dropdown-bottom">
+        <div tabindex="0" role="button" class="btn m-1 bg-blue-500 text-black">
           To Do
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a class="dropdown-item" href="#">In Progress</a>
-          <a class="dropdown-item" href="#">Completed</a>
         </div>
+        <ul
+          tabindex="0"
+          class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
+        >
+          <li><a>In Progress</a></li>
+          <li><a>Completed</a></li>
+        </ul>
       </div>
     </li>
     <li class="work_point">
       <a class="work_point" href="#">HW #2</a>
-      <div class="dropdown">
-        <button
-          class="btn btn-secondary btn-sm dropdown-toggle"
-          type="button"
-          id="dropdownMenuButton"
-          data-toggle="dropdown"
-          aria-haspopup="true"
-          aria-expanded="false"
-        >
+      <div class="dropdown dropdown-bottom">
+        <div tabindex="0" role="button" class="btn m-1 bg-blue-500 text-black">
           To Do
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a class="dropdown-item" href="#">In Progress</a>
-          <a class="dropdown-item" href="#">Completed</a>
         </div>
+        <ul
+          tabindex="0"
+          class="dropdown-content z-[1] menu p-2 shadow rounded-box w-52"
+        >
+          <li><a>In Progress</a></li>
+          <li><a>Completed</a></li>
+        </ul>
       </div>
     </li>
     <li class="work_point">
       <a class="work_point" href="#"> HW #3</a>
-      <div class="dropdown">
-        <button
-          class="btn btn-secondary btn-sm dropdown-toggle"
-          type="button"
-          id="dropdownMenuButton"
-          data-toggle="dropdown"
-          aria-haspopup="true"
-          aria-expanded="false"
-        >
+      <div class="dropdown dropdown-bottom">
+        <div tabindex="0" role="button" class="btn m-1 bg-blue-500 text-black">
           To Do
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a class="dropdown-item" href="#">In Progress</a>
-          <a class="dropdown-item" href="#">Completed</a>
         </div>
+        <ul
+          tabindex="0"
+          class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
+        >
+          <li><a>In Progress</a></li>
+          <li><a>Completed</a></li>
+        </ul>
       </div>
     </li>
   </ul>

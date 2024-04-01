@@ -7,22 +7,20 @@
     </nav>
   </div>
 
-  <div class="dropdown1">
-    <button
-      class="btn btn-secondary dropdown-toggle"
-      type="button"
-      data-bs-toggle="dropdown"
-      aria-expanded="false"
-    >
+  <div class="dropdown dropdown-bottom">
+    <div tabindex="0" role="button" class="btn m-1 bg-blue-500 text-black">
       Subject
-    </button>
-    <ul class="dropdown-menu">
-      <li><a class="dropdown-item" href="#">Math</a></li>
-      <li><a class="dropdown-item" href="#">English</a></li>
-      <li><a class="dropdown-item" href="#">Languages</a></li>
-      <li><a class="dropdown-item" href="#">Science</a></li>
-      <li><a class="dropdown-item" href="#">Computer Science</a></li>
-      <li><a class="dropdown-item" href="#">History</a></li>
+    </div>
+    <ul
+      tabindex="0"
+      class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
+    >
+      <li><a>Mathematics</a></li>
+      <li><a>English</a></li>
+      <li><a>Languages</a></li>
+      <li><a>Science</a></li>
+      <li><a>Computer Science</a></li>
+      <li><a>History</a></li>
     </ul>
   </div>
 
