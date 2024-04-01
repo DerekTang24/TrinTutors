@@ -7,7 +7,8 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "typegen": "npx supabase gen types typescript --project-id \"mwxbxlxljejtrwryanks\" --schema public > types/supabase.d.ts"
   },
   "dependencies": {
     "nuxt": "^3.10.3",

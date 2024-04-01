@@ -1,13 +1,14 @@
 <script setup lang="ts">
+const config = useRuntimeConfig();
 const mail = ref("");
 const pass = ref("");
+const role_id = ref(2);
 const loading = ref(false);
 const supabase = useSupabaseClient();
 
 useHead({ title: "Signup" });
 
 const signUp = async () => {
-  console.log("signup");
   const { data, error } = await supabase.auth.signUp({
     email: mail.value,
     password: pass.value,
@@ -15,18 +16,17 @@ const signUp = async () => {
       emailRedirectTo: "http://localhost:3000/",
     },
   });
-  if (error) console.log(error);
+  if (error) return error;
   else {
-    await navigateTo({ path: "/home" });
+    navigateTo: "/getting-started";
   }
-  console.log(data);
 };
 
 const signInWithOAuth = async () => {
   const { error } = await supabase.auth.signInWithOAuth({
     provider: "github",
     options: {
-      redirectTo: "http://localhost:3000/",
+      redirectTo: `${config.public.apiBase}/getting-started`,
     },
   });
   if (error) console.log(error);
@@ -42,7 +42,7 @@ const signInWithOAuth = async () => {
     Github
   </button>
   <div class="w-80">
-    <label class="input input-bordered flex items-center gap-2">
+    <label class="input input-bordered flex items-center gap-2 my-3">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 16 16"
@@ -78,14 +78,15 @@ const signInWithOAuth = async () => {
         placeholder="Password"
       />
     </label>
-    <div class="form-control">
+    <!-- <div class="form-control">
       <label class="label cursor-pointer">
         <span class="label-text">Student</span>
         <input
           type="radio"
           name="radio-10"
+          v-model="role_id"
+          :value="2"
           class="radio checked:bg-blue-500"
-          checked
         />
       </label>
     </div>
@@ -95,8 +96,9 @@ const signInWithOAuth = async () => {
         <input
           type="radio"
           name="radio-10"
+          v-model="role_id"
+          :value="3"
           class="radio checked:bg-blue-500"
-          checked
         />
       </label>
     </div>
@@ -106,17 +108,18 @@ const signInWithOAuth = async () => {
         <input
           type="radio"
           name="radio-10"
+          v-model="role_id"
+          :value="4"
           class="radio checked:bg-blue-500"
-          checked
         />
       </label>
-    </div>
+    </div> -->
     <button
       class="btn btn-primary"
       :class="{ loading: loading }"
       @click="signUp"
     >
-      SignUp
+      Sign Up
     </button>
   </div>
 </template>

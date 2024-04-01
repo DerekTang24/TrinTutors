@@ -2,19 +2,23 @@
 const mail = ref("");
 const pass = ref("");
 const loading = ref(false);
+const invalid = ref(false);
 const supabase = useSupabaseClient();
 
 useHead({ title: "Login" });
 
 const signIn = async () => {
+  loading.value = true;
   const { data, error } = await supabase.auth.signInWithPassword({
     email: mail.value,
     password: pass.value,
   });
-  if (error) console.log(error);
-  else {
+  if (error) {
+    invalid.value = true;
+  } else {
     await navigateTo({ path: "home" });
   }
+  loading.value = false;
 };
 
 const signInWithOAuth = async () => {
@@ -37,7 +41,7 @@ const signInWithOAuth = async () => {
     Github
   </button>
   <div class="w-80">
-    <label class="input input-bordered flex items-center gap-2">
+    <label class="input input-bordered flex items-center gap-2 my-4">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 16 16"
@@ -51,7 +55,13 @@ const signInWithOAuth = async () => {
           d="M15 6.954 8.978 9.86a2.25 2.25 0 0 1-1.956 0L1 6.954V11.5A1.5 1.5 0 0 0 2.5 13h11a1.5 1.5 0 0 0 1.5-1.5V6.954Z"
         />
       </svg>
-      <input type="text" v-model="mail" class="grow" placeholder="Email" />
+      <input
+        type="text"
+        v-model="mail"
+        v-on:keyup.enter="signIn"
+        class="grow"
+        placeholder="Email"
+      />
     </label>
     <label class="input input-bordered flex items-center gap-2">
       <svg
@@ -69,10 +79,17 @@ const signInWithOAuth = async () => {
       <input
         type="password"
         v-model="pass"
+        v-on:keyup.enter="signIn"
         class="grow"
         placeholder="Password"
       />
     </label>
+    <div
+      class="text-red-500"
+      :class="[{ 'opacity-100': invalid }, { 'opacity-0': !invalid }]"
+    >
+      Invalid username or password
+    </div>
     <button
       class="btn btn-primary"
       :class="{ loading: loading }"
