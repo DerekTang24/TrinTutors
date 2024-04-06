@@ -47,14 +47,6 @@ const selectOption = (dropdown: DropdownState, optionIndex: number) => {
 };
 </script>
 <template>
-  <div id="navbar">
-    <nav class="navbar navbar-expand-lg navbar-light bg-dark">
-      <li class="nav-item active">
-        <a class="navbar-brand text-white-50" href="#">TRINTutors</a>
-      </li>
-    </nav>
-  </div>
-
   <ul id="work_list">
     <li
       class="work_point"
@@ -68,22 +60,22 @@ const selectOption = (dropdown: DropdownState, optionIndex: number) => {
             tabindex="0"
             role="button"
             class="btn m-1 bg-blue-500 text-black"
-            @click="toggleDropdown(dropdown)"
+            @click="toggledropdown(dropdown)"
           >
-            {{ dropdown.selectedOption }}
+            {{ dropdown.selectedoption }}
           </div>
           <ul
-            v-if="dropdown.isOpen"
+            v-if="dropdown.isopen"
             tabindex="0"
             class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
           >
             <li
-              v-for="(option, optionIndex) in dropdown.options"
-              :key="optionIndex"
+              v-for="(option, optionindex) in dropdown.options"
+              :key="optionindex"
             >
-              <a @click="selectOption(dropdown, optionIndex)">{{
+              <a @click="selectoption(dropdown, optionindex)">{{
                 option.label
-              }}</a>
+                }}</a>
             </li>
           </ul>
         </div>
@@ -91,19 +83,19 @@ const selectOption = (dropdown: DropdownState, optionIndex: number) => {
     </li>
   </ul>
   <ul id="completed_work_list">
-    <h5 id="completed_list_title">Completed Assignments:</h5>
-    <li class="work_point"><a class="work_point" href="#"> HW #4</a></li>
-    <li class="work_point"><a class="work_point" href="#">HW #5</a></li>
+    <h5 id="completed_list_title">completed assignments:</h5>
+    <li class="work_point"><a class="work_point" href="#"> hw #4</a></li>
+    <li class="work_point"><a class="work_point" href="#">hw #5</a></li>
   </ul>
 
   <div id="meeting">
-    Upcoming Meetings: <a class="meet_link" href="#"> Google Calendar</a>
+    upcoming meetings: <a class="meet_link" href="#"> google calendar</a>
     <br />
   </div>
 
   <div id="chat_section">
     <textarea id="chat_display" name="chat_info" rows="20" cols="50"></textarea> <br></br>
     <input type="text" id="chat_message" />
-    <button id="chat_button" class="btn btn-info" type="submit">Chat</button>
+    <button id="chat_button" class="btn btn-info" type="submit">chat</button>
   </div>
 </template>

@@ -1,37 +1,30 @@
 <script setup lang="ts"></script>
 <template>
   <div>
-    <div class="overflow-x-auto">
-      <table class="table">
-        <!-- head -->
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Job</th>
-            <th>Favorite Color</th>
-          </tr>
-        </thead>
-        <tbody>
-          <!-- row 1 -->
-          <tr>
-            <td>Cy Ganderton</td>
-            <td>Quality Control Specialist</td>
-            <td>Blue</td>
-          </tr>
-          <!-- row 2 -->
-          <tr>
-            <td>Hart Hagerty</td>
-            <td>Desktop Support Technician</td>
-            <td>Purple</td>
-          </tr>
-          <!-- row 3 -->
-          <tr>
-            <td>Brice Swyre</td>
-            <td>Tax Accountant</td>
-            <td>Red</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+    <ul class="menu bg-base-200 w-56 rounded-box">
+      <h1 class="text-lg font-bold">Menu</h1>
+      <li>
+        <h2 class="menu-title">Student</h2>
+        <ul>
+          <li><NuxtLink to="/student/home">Home</NuxtLink></li>
+          <li><NuxtLink to="/student/work">Work</NuxtLink></li>
+        </ul>
+      </li>
+      <li>
+        <h2 class="menu-title">Tutor</h2>
+        <ul>
+          <li><NuxtLink to="/tutor/home">Home</NuxtLink></li>
+          <li><NuxtLink to="/tutor/list">List</NuxtLink></li>
+          <li><NuxtLink to="/tutor/profile">Profile</NuxtLink></li>
+        </ul>
+      </li>
+      <li>
+        <h2 class="menu-title">Teacher</h2>
+        <ul>
+          <li><NuxtLink to="/teacher/home">Home</NuxtLink></li>
+          <li><NuxtLink to="/teacher/student">Student</NuxtLink></li>
+        </ul>
+      </li>
+    </ul>
   </div>
 </template>
