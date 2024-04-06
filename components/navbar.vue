@@ -36,32 +36,32 @@ const signOut = async () => {
           tabindex="0"
           class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
         >
-          <li><a>Item 1</a></li>
-          <li>
-            <a>Parent</a>
-            <ul class="p-2">
-              <li><a>Submenu 1</a></li>
-              <li><a>Submenu 2</a></li>
-            </ul>
-          </li>
-          <li><a>Item 3</a></li>
+          <li><NuxtLink>Home</NuxtLink></li>
+          <!-- <li> -->
+          <!--   <NuxtLink>Parent</NuxtLink> -->
+          <!--   <ul class="p-2"> -->
+          <!--     <li><NuxtLink>Submenu 1</NuxtLink></li> -->
+          <!--     <li><NuxtLink>Submenu 2</NuxtLink></li> -->
+          <!--   </ul> -->
+          <!-- </li> -->
+          <li><NuxtLink>Work</NuxtLink></li>
         </ul>
       </div>
-      <a class="btn btn-ghost text-xl">TrinTutors</a>
+      <NuxtLink class="btn btn-ghost text-xl">TrinTutors</NuxtLink>
     </div>
     <div class="navbar-center hidden lg:flex">
       <ul class="menu menu-horizontal px-1">
-        <li><a>Item 1</a></li>
-        <li>
-          <details>
-            <summary>Parent</summary>
-            <ul class="p-2">
-              <li><a>Submenu 1</a></li>
-              <li><a>Submenu 2</a></li>
-            </ul>
-          </details>
-        </li>
-        <li><a>Item 3</a></li>
+        <li><NuxtLink>Home</NuxtLink></li>
+        <!-- <li> -->
+        <!--   <details> -->
+        <!--     <summary>Parent</summary> -->
+        <!--     <ul class="p-2"> -->
+        <!--       <li><NuxtLink>Submenu 1</NuxtLink></li> -->
+        <!--       <li><NuxtLink>Submenu 2</NuxtLink></li> -->
+        <!--     </ul> -->
+        <!--   </details> -->
+        <!-- </li> -->
+        <li><NuxtLink>Work</NuxtLink></li>
       </ul>
     </div>
     <div class="navbar-end">
