@@ -23,20 +23,20 @@ useHead({ title: "Student Home" });
           <!-- row 1 -->
           <tr>
             <th>1</th>
-            <td>Tutor 1</td>
-            <td>Subject 1</td>
+            <td><a href="#">Michael</a></td>
+            <td><a href="#">Mathematics</a></td>
           </tr>
           <!-- row 2 -->
           <tr>
             <th>2</th>
-            <td>Tutor 2</td>
-            <td>Subject 2</td>
+            <td><a href="#">Jake</a></td>
+            <td><a href="#">History</a></td>
           </tr>
           <!-- row 3 -->
           <tr>
             <th>3</th>
-            <td>Tutor 3</td>
-            <td>Subject 3</td>
+            <td><a href="#">David</a></td>
+            <td><a href="#">English</a></td>
           </tr>
         </tbody>
       </table>

@@ -1,12 +1,4 @@
 <template>
-  <div id="navbar">
-    <nav class="navbar navbar-expand-lg navbar-light bg-dark">
-      <li class="nav-item active">
-        <a class="navbar-brand text-white-50" href="#">TRINTutors</a>
-      </li>
-    </nav>
-  </div>
-
   <div class="dropdown dropdown-bottom">
     <div tabindex="0" role="button" class="btn m-1 bg-blue-500 text-black">
       Subject
@@ -37,16 +29,16 @@
         <th scope="row">1</th>
         <td>
           <a href="#"
-            >Tutor Name:<br />
-            Grade:<br />
-            Experience:</a
+            >Tutor Name: Michael<br />
+            Grade: 11<br />
+            Experience: 2 years</a
           >
         </td>
         <td>
           <a href="#"
-            >Tutor Name:<br />
-            Grade:<br />
-            Experience:</a
+            >Tutor Name: Jake<br />
+            Grade: 9<br />
+            Experience: 0 years</a
           >
         </td>
       </tr>
@@ -54,16 +46,16 @@
         <th scope="row">2</th>
         <td>
           <a href="#"
-            >Tutor Name:<br />
-            Grade:<br />
-            Experience:</a
+            >Tutor Name: David<br />
+            Grade: 10<br />
+            Experience: 1 year</a
           >
         </td>
         <td>
           <a href="#"
-            >Tutor Name:<br />
-            Grade:<br />
-            Experience:</a
+            >Tutor Name: Caroline<br />
+            Grade: 12<br />
+            Experience: 3 years</a
           >
         </td>
       </tr>
@@ -71,16 +63,16 @@
         <th scope="row">3</th>
         <td>
           <a href="#"
-            >Tutor Name:<br />
-            Grade:<br />
-            Experience:</a
+            >Tutor Name: Isaac<br />
+            Grade: 11<br />
+            Experience: 1 year</a
           >
         </td>
         <td>
           <a href="#"
-            >Tutor Name:<br />
-            Grade:<br />
-            Experience:</a
+            >Tutor Name: Charlie<br />
+            Grade: 11<br />
+            Experience: 2 years</a
           >
         </td>
       </tr>

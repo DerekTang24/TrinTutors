@@ -1,22 +1,18 @@
 <template>
-  <div id="navbar">
-    <nav class="navbar navbar-expand-lg navbar-light bg-dark">
-      <li class="nav-item active">
-        <a class="navbar-brand text-white-50" href="#">TRINTutors</a>
+  <div id="tutee_list">
+    <h4 id="tutee_list_title" class="font-bold" style="font-size: 24px">
+      Students:
+    </h4>
+    <ul style="list-style-type: disc; padding-left: 20px">
+      <li class="tutee_point">
+        <a class="tutee_point" href="#"> John, Mathematics</a>
       </li>
-    </nav>
+      <li class="tutee_point">
+        <a class="tutee_point" href="#">Emily, English</a>
+      </li>
+      <li class="tutee_point">
+        <a class="tutee_point" href="#"> Bella, Mathematics</a>
+      </li>
+    </ul>
   </div>
-
-  <ul id="tutee_list">
-    <h4 id="tutee_list_title">Students:</h4>
-    <li class="tutee_point">
-      <a class="tutee_point" href="#"> Tutee #1, Subject</a>
-    </li>
-    <li class="tutee_point">
-      <a class="tutee_point" href="#">Tutee #2, Subject</a>
-    </li>
-    <li class="tutee_point">
-      <a class="tutee_point" href="#"> Tutee #3, Subject</a>
-    </li>
-  </ul>
 </template>
