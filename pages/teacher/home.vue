@@ -15,4 +15,20 @@
       </li>
     </ul>
   </div>
+<<<<<<< Updated upstream
+=======
+
+  <ul id="tutee_list">
+    <h4 id="tutee_list_title">Students:</h4>
+    <li class="tutee_point">
+      <a class="tutee_point" href="#"> Henry, Math</a>
+    </li>
+    <li class="tutee_point">
+      <a class="tutee_point" href="#">Lucas, Science</a>
+    </li>
+    <li class="tutee_point">
+      <a class="tutee_point" href="#"> Kevin, Latin</a>
+    </li>
+  </ul>
+>>>>>>> Stashed changes
 </template>
