@@ -51,47 +51,46 @@ const signOut = async () => {
     </div>
     <div class="navbar-center hidden lg:flex">
       <ul class="menu menu-horizontal px-1">
-          <li><a href="#">Item 1</a></li>
-          <li>
-            <a>Student</a>
-            <ul class="p-2">
-              <li><a>Tutor</a></li>
-              <li><a>Teacher</a></li>
-            </ul>
-          </li>
-          <li><a>Item 3</a></li>
-        </ul>
-      </div>
-      <a class="btn btn-ghost text-xl" href="/signup">TrinTutors</a>
-    </div>
-    <div class="navbar-center hidden lg:flex">
-      <ul class="menu menu-horizontal px-1">
-        <li><a>Item 1</a></li>
+        <li><a href="#">Item 1</a></li>
         <li>
-          <details>
-            <summary>Student</summary>
-            <ul class="p-2">
-              <li><a>Tutor</a></li>
-              <li><a>Teacher</a></li>
-            </ul>
-          </details>
+          <a>Student</a>
+          <ul class="p-2">
+            <li><a>Tutor</a></li>
+            <li><a>Teacher</a></li>
+          </ul>
         </li>
         <li><a>Item 3</a></li>
-        <li><NuxtLink>Home</NuxtLink></li>
-        <!-- <li> -->
-        <!--   <details> -->
-        <!--     <summary>Parent</summary> -->
-        <!--     <ul class="p-2"> -->
-        <!--       <li><NuxtLink>Submenu 1</NuxtLink></li> -->
-        <!--       <li><NuxtLink>Submenu 2</NuxtLink></li> -->
-        <!--     </ul> -->
-        <!--   </details> -->
-        <!-- </li> -->
-        <li><NuxtLink>Work</NuxtLink></li>
       </ul>
     </div>
-    <div class="navbar-end">
-      <button v-if="user" clbuttonss="btn" @click="signOut">Sign Out</button>
-    </div>
+    <a class="btn btn-ghost text-xl" href="/signup">TrinTutors</a>
+  </div>
+  <div class="navbar-center hidden lg:flex">
+    <ul class="menu menu-horizontal px-1">
+      <li><a>Item 1</a></li>
+      <li>
+        <details>
+          <summary>Student</summary>
+          <ul class="p-2">
+            <li><a>Tutor</a></li>
+            <li><a>Teacher</a></li>
+          </ul>
+        </details>
+      </li>
+      <li><a>Item 3</a></li>
+      <li><NuxtLink>Home</NuxtLink></li>
+      <!-- <li> -->
+      <!--   <details> -->
+      <!--     <summary>Parent</summary> -->
+      <!--     <ul class="p-2"> -->
+      <!--       <li><NuxtLink>Submenu 1</NuxtLink></li> -->
+      <!--       <li><NuxtLink>Submenu 2</NuxtLink></li> -->
+      <!--     </ul> -->
+      <!--   </details> -->
+      <!-- </li> -->
+      <li><NuxtLink>Work</NuxtLink></li>
+    </ul>
+  </div>
+  <div class="navbar-end">
+    <button v-if="user" clbuttonss="btn" @click="signOut">Sign Out</button>
   </div>
 </template>

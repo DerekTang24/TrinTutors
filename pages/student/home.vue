@@ -23,35 +23,20 @@ useHead({ title: "Student Home" });
           <!-- row 1 -->
           <tr>
             <th>1</th>
-<<<<<<< Updated upstream
             <td><a href="#">Michael</a></td>
             <td><a href="#">Mathematics</a></td>
-=======
-            <td><a href="/student/work">Michael</a></td>
-            <td><a href="/student/work">Math</a></td>
->>>>>>> Stashed changes
           </tr>
           <!-- row 2 -->
           <tr>
             <th>2</th>
-<<<<<<< Updated upstream
             <td><a href="#">Jake</a></td>
             <td><a href="#">History</a></td>
-=======
-            <td><a href="/student/work">David</a></td>
-            <td><a href="/student/work">English</a></td>
->>>>>>> Stashed changes
           </tr>
           <!-- row 3 -->
           <tr>
             <th>3</th>
-<<<<<<< Updated upstream
             <td><a href="#">David</a></td>
             <td><a href="#">English</a></td>
-=======
-            <td><a href="/student/work">John</a></td>
-            <td><a href="/student/work">History</a></td>
->>>>>>> Stashed changes
           </tr>
         </tbody>
       </table>
