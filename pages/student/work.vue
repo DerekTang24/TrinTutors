@@ -94,11 +94,5 @@ const selectOption = (dropdown: DropdownState, optionIndex: number) => {
     Upcoming Meetings: <a class="meet_link" href="#">Google Calendar</a>
     <br />
   </div>
-
-  <div id="chat_section">
-    <textarea id="chat_display" name="chat_info" rows="20" cols="50"></textarea>
-    <br />
-    <input type="text" id="chat_message" />
-    <button id="chat_button" class="btn btn-info" type="submit">Chat</button>
-  </div>
+  <Chat />
 </template>

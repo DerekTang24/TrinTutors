@@ -4,7 +4,12 @@ export default defineNuxtConfig({
     dirs: ["types/*.ts", "@/types/*.d.ts", "store/*.ts", "types/**/*.ts"],
   },
   devtools: { enabled: true },
-  modules: ["@nuxtjs/tailwindcss", "@nuxtjs/supabase"],
+  modules: ["@nuxtjs/tailwindcss", "@nuxtjs/supabase", "@vueuse/nuxt"],
+  nitro: {
+    experimental: {
+      websocket: true,
+    },
+  },
   tailwindcss: {
     config: {
       mode: "jit",
