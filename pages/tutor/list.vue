@@ -1,21 +1,77 @@
-<template>
-  <div class="dropdown dropdown-bottom">
-    <div tabindex="0" role="button" class="btn m-1 bg-blue-500 text-black">
-      Subject
-    </div>
-    <ul
-      tabindex="0"
-      class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
-    >
-      <li><a>Mathematics</a></li>
-      <li><a>English</a></li>
-      <li><a>Languages</a></li>
-      <li><a>Science</a></li>
-      <li><a>Computer Science</a></li>
-      <li><a>History</a></li>
-    </ul>
-  </div>
+<script setup lang="ts">
+import { reactive } from "vue";
 
+interface DropdownOption {
+  label: string;
+  selected: boolean;
+}
+
+interface DropdownState {
+  isOpen: boolean;
+  options: DropdownOption[];
+  selectedOption: string;
+}
+
+// Function to create a new dropdown state
+function createDropdownState(): DropdownState {
+  return reactive({
+    isOpen: false,
+    options: [
+      { label: "Mathematics", selected: false },
+      { label: "English", selected: false },
+      { label: "Languages", selected: false },
+      { label: "Science", selected: false },
+      { label: "Computer Science", selected: false },
+      { label: "History", selected: false },
+    ],
+    selectedOption: "Subject", // Initial prompt
+  });
+}
+
+// Create a single dropdown state
+const dropdown = createDropdownState();
+
+const toggleDropdown = () => {
+  dropdown.isOpen = !dropdown.isOpen;
+};
+
+const selectOption = (optionIndex: number) => {
+  const selectedOption = dropdown.options[optionIndex];
+  dropdown.selectedOption = selectedOption.label;
+  dropdown.options.forEach((option, i) => {
+    option.selected = i === optionIndex;
+  });
+  dropdown.isOpen = false; // Close dropdown after selection
+};
+</script>
+<template>
+  <br></br><br></br>
+  <div class="dropdown-container">
+    <div class="dropdown dropdown-bottom">
+      <div
+        tabindex="0"
+        role="button"
+        class="btn m-1 bg-blue-500 text-black"
+        @click="toggleDropdown"
+      >
+        {{ dropdown.selectedOption }}
+      </div>
+      <ul
+        v-if="dropdown.isOpen"
+        tabindex="0"
+        class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
+      >
+        <li
+          v-for="(option, optionIndex) in dropdown.options"
+          :key="optionIndex"
+          @click="selectOption(optionIndex)"
+        >
+          <a>{{ option.label }}</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  
   <table class="table">
     <thead>
       <tr>

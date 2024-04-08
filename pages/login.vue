@@ -97,5 +97,13 @@ const signInWithOAuth = async () => {
     >
       Login
     </button>
+    <br></br><br></br>
+    <button
+      class="btn btn-primary"
+      :class="{ loading: loading }"
+      @click="signIn"
+    >
+      Create
+    </button>
   </div>
 </template>
