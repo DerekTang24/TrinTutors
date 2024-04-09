@@ -1,7 +1,7 @@
 <template>
   <div id="tutee_list">
     <h4 id="tutee_list_title" class="font-bold" style="font-size: 24px">
-      Michael's Tutee List:
+      Michael's Student List:
     </h4>
     <ul style="list-style-type: disc; padding-left: 20px">
       <li class="tutee_point">

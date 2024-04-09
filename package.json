@@ -11,8 +11,8 @@
     "typegen": "npx supabase gen types typescript --project-id \"mwxbxlxljejtrwryanks\" --schema public > types/supabase.d.ts"
   },
   "dependencies": {
-    "nuxt": "npm:nuxt-nightly@latest",
     "@vueuse/nuxt": "^10.9.0",
+    "nuxt": "npm:nuxt-nightly@latest",
     "vue": "^3.4.21",
     "vue-router": "^4.3.0"
   },
