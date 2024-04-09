@@ -46,6 +46,15 @@ const selectOption = (dropdown: DropdownState, optionIndex: number) => {
   });
   dropdown.isOpen = false; // Close dropdown after selection
 };
+
+function dropdownButtonClass(selectedOption: string): string {
+  if (selectedOption === "In Progress") {
+    return "bg-orange-500"; // Assuming Tailwind CSS classes for demonstration
+  } else if (selectedOption === "Completed") {
+    return "bg-green-500";
+  }
+  return "bg-blue-500"; // Default color
+}
 </script>
 
 <template>
@@ -61,7 +70,10 @@ const selectOption = (dropdown: DropdownState, optionIndex: number) => {
           <div
             tabindex="0"
             role="button"
-            class="btn m-1 bg-blue-500 text-black"
+            :class="[
+              'btn m-1 text-black',
+              dropdownButtonClass(dropdown.selectedOption),
+            ]"
             @click="toggleDropdown(dropdown)"
           >
             {{ dropdown.selectedOption }}
@@ -74,10 +86,9 @@ const selectOption = (dropdown: DropdownState, optionIndex: number) => {
             <li
               v-for="(option, optionIndex) in dropdown.options"
               :key="optionIndex"
+              @click="selectOption(dropdown, optionIndex)"
             >
-              <a @click="selectOption(dropdown, optionIndex)">{{
-                option.label
-              }}</a>
+              <a>{{ option.label }}</a>
             </li>
           </ul>
         </div>
