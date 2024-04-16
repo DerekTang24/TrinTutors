@@ -1,5 +1,11 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  runtimeConfig: {
+    google: {
+      client_id: process.env.GOOGLE_CLIENT_ID,
+      client_secret: process.env.GOOGLE_CLIENT_SECRET,
+    },
+  },
   imports: {
     dirs: ["types/*.ts", "@/types/*.d.ts", "store/*.ts", "types/**/*.ts"],
   },

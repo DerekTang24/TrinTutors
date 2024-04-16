@@ -1,4 +1,5 @@
 <script setup lang="ts">
+const runtimeConfig = useRuntimeConfig()
 const mail = ref("");
 const pass = ref("");
 const loading = ref(false);
@@ -21,7 +22,20 @@ const signIn = async () => {
   loading.value = false;
 };
 
-const signInWithOAuth = async () => {
+const signInWithGoogle = async () => {
+  const { data, error } = await supabase.auth.signInWithOAuth({
+    provider: "google",
+    options: {
+      queryParams: {
+        access_type: 'offline',
+        prompt: 'consent',
+      },
+      redirectTo: "http://localhost:3000/",
+    },
+  });
+  if (error) console.log(error);
+};
+const signInWithGithub = async () => {
   const { error } = await supabase.auth.signInWithOAuth({
     provider: "github",
     options: {
@@ -31,12 +45,18 @@ const signInWithOAuth = async () => {
   if (error) console.log(error);
 };
 </script>
-
 <template>
   <button
     class="btn btn-primary"
     :class="{ loading: loading }"
-    @click="signInWithOAuth"
+    @click="signInWithGoogle"
+  >
+    Google
+  </button>
+  <button
+    class="btn btn-primary"
+    :class="{ loading: loading }"
+    @click="signInWithGithub"
   >
     Github
   </button>
