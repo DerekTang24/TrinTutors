@@ -70,10 +70,7 @@ function dropdownButtonClass(selectedOption: string): string {
           <div
             tabindex="0"
             role="button"
-            :class="[
-              'btn m-1 text-black',
-              dropdownButtonClass(dropdown.selectedOption),
-            ]"
+            class="btn m-1 bg-blue-500 text-black"
             @click="toggleDropdown(dropdown)"
           >
             {{ dropdown.selectedOption }}
@@ -86,9 +83,10 @@ function dropdownButtonClass(selectedOption: string): string {
             <li
               v-for="(option, optionIndex) in dropdown.options"
               :key="optionIndex"
-              @click="selectOption(dropdown, optionIndex)"
             >
-              <a>{{ option.label }}</a>
+              <a @click="selectOption(dropdown, optionIndex)">{{
+                option.label
+              }}</a>
             </li>
           </ul>
         </div>

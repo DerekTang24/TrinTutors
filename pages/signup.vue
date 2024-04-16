@@ -6,6 +6,8 @@ const role_id = ref(2);
 const loading = ref(false);
 const supabase = useSupabaseClient();
 
+const selected = ref("student");
+
 useHead({ title: "Signup" });
 
 const signUp = async () => {
@@ -121,5 +123,20 @@ const signInWithOAuth = async () => {
     >
       Sign Up
     </button>
+  </div>
+  <div>
+    User Group
+    <br></br>
+
+    <input type="radio" id="stud" value="student" v-model="selected" />
+    <label for="email">Student</label>
+    <br></br>
+
+    <input type="radio" id="tutor" value="tutor" v-model="selected" />
+    <label for="sms">Tutor</label>
+    <br></br>
+
+    <input type="radio" id="teach" value="teacher" v-model="selected" />
+    <label for="push">Teacher</label>
   </div>
 </template>

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 //In prod: check if secure then use wss://
 const { status, data, send, open, close } = useWebSocket(
-  `ws://localhost:3000/api/websocket`,
+  `ws://localhost:3000/api/websocket`
 );
 
 const history = ref<string[]>([]);
