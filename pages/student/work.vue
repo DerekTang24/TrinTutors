@@ -12,25 +12,23 @@ interface DropdownState {
   selectedOption: string;
 }
 
-// Function to create a new dropdown state
 function createDropdownState(): DropdownState {
   return reactive({
     isOpen: false,
     options: [
-      { label: "To Do", selected: true }, // Changed the first option to not be selected by default
+      { label: "To Do", selected: true },
       { label: "In Progress", selected: false },
       { label: "Completed", selected: false },
     ],
-    selectedOption: "To Do", // Changed to prompt selection
+    selectedOption: "To Do",
   });
 }
 
-// Create an individual state for each dropdown
 const dropdownStates = reactive({
   workPoints: [
     createDropdownState(),
     createDropdownState(),
-    createDropdownState(), // Assuming 3 work points for illustration
+    createDropdownState(),
   ],
 });
 
@@ -44,16 +42,16 @@ const selectOption = (dropdown: DropdownState, optionIndex: number) => {
   dropdown.options.forEach((option, i) => {
     option.selected = i === optionIndex;
   });
-  dropdown.isOpen = false; // Close dropdown after selection
+  dropdown.isOpen = false;
 };
 
 function dropdownButtonClass(selectedOption: string): string {
   if (selectedOption === "In Progress") {
-    return "bg-orange-500"; // Assuming Tailwind CSS classes for demonstration
+    return "bg-orange-500";
   } else if (selectedOption === "Completed") {
     return "bg-green-500";
   }
-  return "bg-blue-500"; // Default color
+  return "bg-blue-500";
 }
 </script>
 
