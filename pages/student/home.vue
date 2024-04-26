@@ -25,11 +25,9 @@ const tutors = [
           </tr>
         </thead>
         <tbody>
-          <!-- Dynamically generate rows for each tutor -->
           <tr v-for="tutor in tutors" :key="tutor.id">
             <th>{{ tutor.id }}</th>
             <td>
-              <!-- Dynamically generate href with tutor's name -->
               <a :href="`/student/work?name=${tutor.name}`">{{ tutor.name }}</a>
             </td>
             <td>{{ tutor.subject }}</td>
