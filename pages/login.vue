@@ -30,7 +30,7 @@ const signInWithGoogle = async () => {
         access_type: 'offline',
         prompt: 'consent',
       },
-      redirectTo: "http://localhost:3000/",
+      redirectTo: "http://localhost:3000/student/home",
     },
   });
   if (error) console.log(error);
