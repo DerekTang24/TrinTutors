@@ -23,8 +23,20 @@ const signUp = async () => {
     navigateTo: "/getting-started";
   }
 };
+const signInWithGoogle = async () => {
+  const { data, error } = await supabase.auth.signInWithOAuth({
+    provider: "google",
+    options: {
+      queryParams: {
+        access_type: 'offline',
+      },
+      redirectTo: `http://localhost:3000/getting-started`,
+    },
+  });
+  if (error) console.log(error);
+};
 
-const signInWithOAuth = async () => {
+const signInWithGithub = async () => {
   const { error } = await supabase.auth.signInWithOAuth({
     provider: "github",
     options: {
@@ -39,7 +51,14 @@ const signInWithOAuth = async () => {
   <button
     class="btn btn-primary"
     :class="{ loading: loading }"
-    @click="signInWithOAuth"
+    @click="signInWithGoogle"
+  >
+    Google
+  </button>
+  <button
+    class="btn btn-primary"
+    :class="{ loading: loading }"
+    @click="signInWithGithub"
   >
     Github
   </button>

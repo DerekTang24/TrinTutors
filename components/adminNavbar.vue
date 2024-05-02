@@ -46,7 +46,7 @@ const signOut = async () => {
           <li>
             <NuxtLink>Tutor</NuxtLink>
             <ul class="p-2">
-              <li><NuxtLink to="/tutors/home">Home</NuxtLink></li>
+              <li><NuxtLink to="/tutor/home">Home</NuxtLink></li>
               <li><NuxtLink to="/tutor/list">List</NuxtLink></li>
               <li><NuxtLink to="/tutor/profile">Profile</NuxtLink></li>
             </ul>

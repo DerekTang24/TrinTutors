@@ -22,19 +22,6 @@ const signIn = async () => {
   loading.value = false;
 };
 
-const signInWithGoogle = async () => {
-  const { data, error } = await supabase.auth.signInWithOAuth({
-    provider: "google",
-    options: {
-      queryParams: {
-        access_type: 'offline',
-        prompt: 'consent',
-      },
-      redirectTo: "http://localhost:3000/student/home",
-    },
-  });
-  if (error) console.log(error);
-};
 const signInWithGithub = async () => {
   const { error } = await supabase.auth.signInWithOAuth({
     provider: "github",
@@ -46,13 +33,6 @@ const signInWithGithub = async () => {
 };
 </script>
 <template>
-  <button
-    class="btn btn-primary"
-    :class="{ loading: loading }"
-    @click="signInWithGoogle"
-  >
-    Google
-  </button>
   <button
     class="btn btn-primary"
     :class="{ loading: loading }"
