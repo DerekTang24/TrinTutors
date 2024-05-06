@@ -119,12 +119,14 @@ const signInWithGithub = async () => {
       Login
     </button>
     <br></br><br></br>
-    <button
+    <NuxtLink to="/signup">
+      <button
       class="btn btn-primary"
-      :class="{ loading: loading }"
-      @click="signIn"
-    >
-      Create
-    </button>
+    >Create</button>
+      </NuxtLink>
   </div>
 </template>
+
+
+
+
