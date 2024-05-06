@@ -7,6 +7,7 @@ const signOut = async () => {
   const { error } = await supabase.auth.signOut();
   if (error) console.log(error);
   else {
+    const role = useCookie("role");
     await navigateTo({ path: "/login" });
   }
 };

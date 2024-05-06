@@ -1,8 +1,6 @@
 <script setup lang="ts">
 const supabase = useSupabaseClient();
 const user = useSupabaseUser();
-console.log(user);
-
 useHead({ title: "Student Home" });
 
 const tutors = [

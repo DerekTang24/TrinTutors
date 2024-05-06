@@ -17,7 +17,7 @@ const signIn = async () => {
   if (error) {
     invalid.value = true;
   } else {
-    await navigateTo({ path: "home" });
+    await navigateTo({ path: "/redirect" });
   }
   loading.value = false;
 };
@@ -29,22 +29,12 @@ const signInWithGoogle = async () => {
       queryParams: {
         access_type: 'offline',
       },
-      redirectTo: `http://localhost:3000/`,
+      redirectTo: `http://localhost:3000/redirect`,
     },
   });
   if (error) console.log(error);
 };
 
-
-const signInWithGithub = async () => {
-  const { error } = await supabase.auth.signInWithOAuth({
-    provider: "github",
-    options: {
-      redirectTo: "http://localhost:3000/student/home",
-    },
-  });
-  if (error) console.log(error);
-};
 </script>
 <template>
     <button
@@ -53,13 +43,6 @@ const signInWithGithub = async () => {
     @click="signInWithGoogle"
   >
     Google
-  </button>
-  <button
-    class="btn btn-primary"
-    :class="{ loading: loading }"
-    @click="signInWithGithub"
-  >
-    Github
   </button>
   <div class="w-80">
     <label class="input input-bordered flex items-center gap-2 my-4">
