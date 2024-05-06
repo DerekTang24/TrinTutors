@@ -11,10 +11,13 @@ if (user.value) {
   switch (role_id) {
     case 1:
       navigateTo({ path: "/student/home" });
+      break;
     case 2:
       navigateTo({ path: "/tutor/home" });
+      break;
     case 3:
       navigateTo({ path: "/teacher/home" });
+      break;
   }
 }
 console.log("session", session);
