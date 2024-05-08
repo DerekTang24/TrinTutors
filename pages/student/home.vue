@@ -2,12 +2,10 @@
 const supabase = useSupabaseClient();
 const user = useSupabaseUser();
 useHead({ title: "Student Home" });
-
-const tutors = [
-  { id: 1, name: "Michael", subject: "Mathematics" },
-  { id: 2, name: "Jake", subject: "History" },
-  { id: 3, name: "David", subject: "English" },
-];
+let { data: tutors, error } = await supabase
+  .from("tutors")
+  .select("*")
+  .range(0, 9);
 </script>
 
 <template>

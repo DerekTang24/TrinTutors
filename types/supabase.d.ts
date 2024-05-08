@@ -66,6 +66,38 @@ export type Database = {
         };
         Relationships: [];
       };
+      tutors: {
+        Row: {
+          experience: number;
+          grade: number;
+          id: string;
+          name: string;
+          subjects: string[] | null;
+        };
+        Insert: {
+          experience: number;
+          grade: number;
+          id: string;
+          name: string;
+          subjects?: string[] | null;
+        };
+        Update: {
+          experience?: number;
+          grade?: number;
+          id?: string;
+          name?: string;
+          subjects?: string[] | null;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "tutors_id_fkey";
+            columns: ["id"];
+            isOneToOne: true;
+            referencedRelation: "users";
+            referencedColumns: ["id"];
+          },
+        ];
+      };
       user_classes: {
         Row: {
           class_id: number;
