@@ -1,19 +1,3 @@
-<template>
-  <div>
-    <template v-if="role_id === 1">
-      <StudentNavbar />
-    </template>
-    <template v-if="role_id === 2">
-      <TutorNavbar />
-    </template>
-    <template v-if="role_id === 3">
-      <TeacherNavbar />
-    </template>
-    <slot />
-    <Footer />
-  </div>
-</template>
-
 <script setup lang="ts">
 const supabase = useSupabaseClient();
 const user = useSupabaseUser();
@@ -29,9 +13,25 @@ if (user.value) {
   if (error) {
     console.error(error);
   } else {
-    role_id = user_roles[0].role_id;
+    if (user_roles.length !== 0) {
+      role_id = user_roles[0].role_id;
+    }
   }
 }
-
 console.log("session", session);
 </script>
+<template>
+  <div>
+    <template v-if="role_id === 1">
+      <StudentNavbar />
+    </template>
+    <template v-if="role_id === 2">
+      <TutorNavbar />
+    </template>
+    <template v-if="role_id === 3">
+      <TeacherNavbar />
+    </template>
+    <slot />
+    <Footer />
+  </div>
+</template>
