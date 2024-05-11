@@ -1,7 +1,11 @@
 <script setup lang="ts">
 const supabase = useSupabaseClient();
 const user = useSupabaseUser();
-
+const { data: tutors, error } = await supabase
+  .from("tutors")
+  .select("name")
+  .eq("id", user.value!.id);
+const tutorNameSlug = tutors[0].name.replace(" ", "-");
 const signOut = async () => {
   console.log("signout");
   const { error } = await supabase.auth.signOut();
@@ -22,7 +26,7 @@ const signOut = async () => {
         <NuxtLink class="mx-4" to="/tutor/home">Home</NuxtLink>
         <NuxtLink class="mx-4" to="/student/work">Work</NuxtLink>
         <NuxtLink class="mx-4" to="/tutor/list">List</NuxtLink>
-        <NuxtLink class="mx-4" to="/tutor/profile">Profile</NuxtLink>
+        <NuxtLink class="mx-4" v-bind:to="'/tutor/profile/' + tutorNameSlug">Profile</NuxtLink>
       </div>
       <div class="navbar-end flex items-end">
         <button v-if="user" class="btn" @click="signOut">Sign Out</button>

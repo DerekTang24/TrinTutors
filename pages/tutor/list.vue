@@ -3,7 +3,6 @@ const supabase = useSupabaseClient();
 const user = useSupabaseUser();
 
 const { data: tutors, error } = await supabase.from("tutors").select("*");
-console.log(tutors);
 </script>
 <template>
   <div class="overflow-x-auto">
@@ -11,7 +10,6 @@ console.log(tutors);
       <!-- head -->
       <thead>
         <tr>
-          <th></th>
           <th>Name</th>
           <th>Grade</th>
           <th>Experience</th>
@@ -21,11 +19,15 @@ console.log(tutors);
       <tbody>
         <!-- row 1 -->
         <tr v-for="(tutor, index) in tutors">
-          <th>{{ index }}</th>
-          <td>{{ tutor.name }}</td>
+          <td>
+            <nuxtLink
+              v-bind:to="'/tutor/profile/' + tutor.name.replace(' ', '-')"
+              >{{ tutor.name }}</nuxtLink
+            >
+          </td>
           <td>{{ tutor.grade }}</td>
           <td>{{ tutor.experience }} year(s)</td>
-          <td>{{ tutor.subjects }}</td>
+          <td>{{ tutor.subjects.join(", ") }}</td>
         </tr>
         <!-- row 2 -->
       </tbody>
