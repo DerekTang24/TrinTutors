@@ -1,45 +1,38 @@
+<script setup lang="ts">
+const supabase = useSupabaseClient();
+const user = useSupabaseUser();
+let studentId = ref(null);
+const { data: studentIds } = await supabase
+  .from("tutor_student")
+  .select("*")
+  .eq("tutor_id", user.value.id);
+
+const students = await Promise.all(
+  studentIds.map(async (studentId) => {
+    const { data: students, error } = await supabase
+      .from("students")
+      .select("*")
+      .eq("id", studentIds[0].student_id);
+    return students[0];
+  })
+);
+</script>
+
 <template>
-  <div id="tutee_list">
-    <h4 id="tutee_list_title" class="font-bold" style="font-size: 24px">
-      Michael's Student List:
+  <div id="student_request_list">
+    <h4
+      id="student_request_list_title"
+      style="font-size: 20px"
+      class="font-bold"
+    >
+      Students
     </h4>
     <ul style="list-style-type: disc; padding-left: 20px">
-      <li class="tutee_point">
-        <a class="tutee_point" href="#"> John, Mathematics</a>
-      </li>
-      <li class="tutee_point">
-        <a class="tutee_point" href="#">Emily, English</a>
-      </li>
-      <li class="tutee_point">
-        <a class="tutee_point" href="#"> Henry, Biology</a>
+      <li class="tutor_point" v-for="student in students" :key="student.id">
+        <a :href="`/student/work?name=${student.name}`"
+          >{{ student.name }}: {{ student.subjects.join(", ") }}</a
+        >
       </li>
     </ul>
   </div>
-
-  <div id="tutee_request_list">
-    <h4 id="tutee_request_list_title" class="font-bold">Student Request:</h4>
-    <ul style="list-style-type: disc; padding-left: 20px">
-      <li class="tutor_point">
-        Bella, Mathematics
-        <input
-          class="form-check-input"
-          type="checkbox"
-          value=""
-          id="flexCheckDefault"
-        />
-      </li>
-      <li class="tutor_point">
-        Nick, French
-        <input
-          class="form-check-input"
-          type="checkbox"
-          value=""
-          id="flexCheckDefault"
-        />
-      </li>
-    </ul>
-  </div>
-  <button id="tutor_button" class="btn btn-info" type="submit">
-    Select Students
-  </button>
 </template>

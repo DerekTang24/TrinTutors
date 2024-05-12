@@ -1,18 +1,21 @@
 <script setup lang="ts">
 const supabase = useSupabaseClient();
 const user = useSupabaseUser();
-const { data: tutorIds, error } = await supabase
+let tutorId = ref(null);
+const { data: tutorIds } = await supabase
   .from("tutor_student")
-  .select("tutor_id");
-console.log(tutorIds);
+  .select("*")
+  .eq("student_id", user.value.id);
+
 const tutors = await Promise.all(
   tutorIds.map(async (tutorId) => {
     const { data: tutors, error } = await supabase
       .from("tutors")
       .select("*")
-      .eq("id", tutorId.tutor_id);
+      .eq("id", tutorIds[0].tutor_id);
+    console.log(tutors[0]);
     return tutors[0];
-  }),
+  })
 );
 </script>
 <template>
