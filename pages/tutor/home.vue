@@ -2,20 +2,25 @@
 const supabase = useSupabaseClient();
 const user = useSupabaseUser();
 let studentId = ref(null);
+let students: any[];
 const { data: studentIds } = await supabase
   .from("tutor_student")
   .select("*")
   .eq("tutor_id", user.value.id);
 
-const students = await Promise.all(
-  studentIds.map(async (studentId) => {
-    const { data: students, error } = await supabase
-      .from("students")
-      .select("*")
-      .eq("id", studentIds[0].student_id);
-    return students[0];
-  })
-);
+if (studentIds.length > 0) {
+  students = await Promise.all(
+    studentIds.map(async (studentId) => {
+      const { data: students, error } = await supabase
+        .from("students")
+        .select("*")
+        .eq("id", studentIds[0].student_id);
+      console.log(students[0].name);
+      return students[0];
+    })
+  );
+}
+console.log(students);
 </script>
 
 <template>
