@@ -19,7 +19,7 @@ const submitRole = async () => {
     } else if (role_id.value === 2) {
       navigateTo({ path: "/tutor/tutor-getting-started" });
     } else {
-      navigateTo({ path: "/teacher/home" });
+      navigateTo({ path: "/teacher/teacher-getting-started" });
     }
   }
 };

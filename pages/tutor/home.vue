@@ -1,26 +1,26 @@
 <script setup lang="ts">
 const supabase = useSupabaseClient();
-const user = useSupabaseUser();
-let studentId = ref(null);
-let students: any[];
-const { data: studentIds } = await supabase
+const supabaseUser = useSupabaseUser();
+let student = [];
+const { data: tutor_studentId } = await supabase
   .from("tutor_student")
-  .select("*")
-  .eq("tutor_id", user.value.id);
+  .select("student_id");
 
-if (studentIds.length > 0) {
-  students = await Promise.all(
-    studentIds.map(async (studentId) => {
-      const { data: students, error } = await supabase
-        .from("students")
-        .select("*")
-        .eq("id", studentIds[0].student_id);
-      console.log(students[0].name);
-      return students[0];
-    })
-  );
+for (let tutorId in tutor_studentId) {
+  console.log("te", tutor_studentId[tutorId]);
+
+  const { data: students } = await supabase
+    .from("students")
+    .select("*")
+    .eq("id", tutor_studentId[tutorId].student_id);
+
+  if (students && students.length > 0) {
+    student.push(students[0]);
+  }
+
+  console.log(tutor_studentId);
+  console.log(student);
 }
-console.log(students);
 </script>
 
 <template>
@@ -33,9 +33,9 @@ console.log(students);
       Students
     </h4>
     <ul style="list-style-type: disc; padding-left: 20px">
-      <li class="tutor_point" v-for="student in students" :key="student.id">
-        <a :href="`/student/work?name=${student.name}`"
-          >{{ student.name }}: {{ student.subjects.join(", ") }}</a
+      <li class="tutor_point" v-for="stud in student" :key="stud.id">
+        <a :href="`/student/work?name=${stud.name}`"
+          >{{ stud.name }}: {{ stud.subjects.join(", ") }}</a
         >
       </li>
     </ul>

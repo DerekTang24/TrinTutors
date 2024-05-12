@@ -1,17 +1,37 @@
+<script setup lang="ts">
+const supabase = useSupabaseClient();
+const supabaseUser = useSupabaseUser();
+let student = [];
+const { data: teacher_studentId } = await supabase
+  .from("teacher_student")
+  .select("student_id");
+
+for (let teachId in teacher_studentId) {
+  console.log("te", teacher_studentId[teachId]);
+
+  const { data: students } = await supabase
+    .from("students")
+    .select("*")
+    .eq("id", teacher_studentId[teachId].student_id);
+
+  if (students && students.length > 0) {
+    student.push(students[0]);
+  }
+
+  console.log(teacher_studentId);
+  console.log(student);
+}
+</script>
 <template>
   <div id="tutee_list">
     <h4 id="tutee_list_title" class="font-bold" style="font-size: 24px">
       Students:
     </h4>
     <ul style="list-style-type: disc; padding-left: 20px">
-      <li class="tutee_point">
-        <a class="tutee_point" href="#"> John, Mathematics</a>
-      </li>
-      <li class="tutee_point">
-        <a class="tutee_point" href="#">Emily, English</a>
-      </li>
-      <li class="tutee_point">
-        <a class="tutee_point" href="#"> Bella, Mathematics</a>
+      <li class="tutee_point" v-for="stud in student" :key="stud.id">
+        <a :href="`/teacher/student?name=${stud.name}`"
+          >{{ stud.name }}: {{ stud.subjects.join(", ") }}</a
+        >
       </li>
     </ul>
   </div>

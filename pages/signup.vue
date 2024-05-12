@@ -28,7 +28,7 @@ const signInWithGoogle = async () => {
     provider: "google",
     options: {
       queryParams: {
-        access_type: 'offline',
+        access_type: "offline",
       },
       redirectTo: `http://localhost:3000/getting-started`,
     },
@@ -124,20 +124,5 @@ const signInWithGoogle = async () => {
     >
       Sign Up
     </button>
-  </div>
-  <div>
-    User Group
-    <br></br>
-
-    <input type="radio" id="stud" value="student" v-model="selected" />
-    <label for="email">Student</label>
-    <br></br>
-
-    <input type="radio" id="tutor" value="tutor" v-model="selected" />
-    <label for="sms">Tutor</label>
-    <br></br>
-
-    <input type="radio" id="teach" value="teacher" v-model="selected" />
-    <label for="push">Teacher</label>
   </div>
 </template>
