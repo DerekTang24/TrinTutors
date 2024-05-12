@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 const supabase = useSupabaseClient();
 const user = useSupabaseUser();
 const session = useSupabaseSession();

@@ -13,6 +13,14 @@ const submitRole = async () => {
         role_id: parseInt(role_id.value),
       },
     });
+    console.log(role_id.value);
+    if (role_id.value === 1) {
+      navigateTo({ path: "/student/student-getting-started" });
+    } else if (role_id.value === 2) {
+      navigateTo({ path: "/tutor/tutor-getting-started" });
+    } else {
+      navigateTo({ path: "/teacher/home" });
+    }
   }
 };
 </script>

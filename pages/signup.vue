@@ -30,7 +30,7 @@ const signInWithGoogle = async () => {
       queryParams: {
         access_type: 'offline',
       },
-      redirectTo: `http://localhost:3000/redirect`,
+      redirectTo: `http://localhost:3000/getting-started`,
     },
   });
   if (error) console.log(error);
