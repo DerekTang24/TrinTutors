@@ -12,7 +12,6 @@ const tutor = tutors[0];
 const { data: tutorImgUrl } = supabase.storage
   .from("avatars")
   .getPublicUrl(tutor.id);
-console.log(tutorImgUrl);
 const bookTutor = async () => {
   if (supabaseUser.value) {
     const role = await $fetch("/api/tutor-student", {
@@ -33,7 +32,6 @@ const fetchUserRoles = async () => {
   if (userRoles.length > 0) {
     userRoles.forEach((role) => {
       role_id.value = role.role_id;
-      console.log(role_id.value);
     });
   }
 };

@@ -23,5 +23,4 @@ if (user.value) {
       break;
   }
 }
-console.log("session", session);
 </script>

@@ -7,8 +7,6 @@ const { data: tutor_studentId } = await supabase
   .select("*");
 
 for (let tutorId in tutor_studentId) {
-  console.log("te", tutor_studentId[tutorId]);
-
   const { data: students } = await supabase
     .from("students")
     .select("*")
@@ -31,10 +29,6 @@ for (let tutorId in tutor_studentId) {
   ) {
     student = allStudents;
   }
-
-  console.log(supabaseUser.value.id);
-  console.log(tutor_studentId[tutorId].tutor_id);
-  console.log(students);
 }
 </script>
 

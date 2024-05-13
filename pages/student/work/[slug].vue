@@ -11,10 +11,10 @@ const { data: tutors } = await supabase
   .select("*")
   .eq("name", tutorName);
 const tutor = tutors[0];
+const isAdmin = false;
 const isOwner = user.value.id == tutor.id;
 const databaseAssignments = async () => {
-  if (isOwner) {
-    console.log("isOwner");
+  if (isOwner || isAdmin) {
     const { data } = await supabase
       .from("assignment")
       .select("*")

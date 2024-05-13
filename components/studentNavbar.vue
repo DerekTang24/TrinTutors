@@ -3,7 +3,6 @@ const supabase = useSupabaseClient();
 const user = useSupabaseUser();
 
 const signOut = async () => {
-  console.log("signout");
   const { error } = await supabase.auth.signOut();
   if (error) console.log(error);
   else {

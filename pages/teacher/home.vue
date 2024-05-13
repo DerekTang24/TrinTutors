@@ -7,15 +7,12 @@ const { data: teacher_studentId } = await supabase
   .select("*");
 
 for (let teachId in teacher_studentId) {
-  console.log("te", teacher_studentId[teachId]);
-
   const { data: students } = await supabase
     .from("students")
     .select("*")
     .eq("id", teacher_studentId[teachId].student_id);
 
   const { data: allStudents } = await supabase.from("students").select("*");
-  console.log(allStudents);
 
   if (
     students &&
@@ -32,9 +29,6 @@ for (let teachId in teacher_studentId) {
   ) {
     student = allStudents;
   }
-
-  console.log(teacher_studentId);
-  console.log(student);
 }
 </script>
 <template>

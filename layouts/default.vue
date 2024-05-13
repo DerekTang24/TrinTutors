@@ -18,7 +18,6 @@ if (user.value) {
     }
   }
 }
-console.log("session", session);
 </script>
 <template>
   <div>

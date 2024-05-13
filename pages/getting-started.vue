@@ -5,7 +5,6 @@ const loading = ref(false);
 const supabase = useSupabaseClient();
 const supabaseUser = useSupabaseUser();
 const submitRole = async () => {
-  console.log(supabaseUser.value);
   if (supabaseUser.value) {
     const role = await $fetch("/api/getting-started", {
       method: "POST",
@@ -14,7 +13,6 @@ const submitRole = async () => {
         role_id: parseInt(role_id.value),
       },
     });
-    console.log(role_id.value);
     if (role_id.value === 1) {
       navigateTo({ path: "/student/student-getting-started" });
     } else if (role_id.value === 2) {

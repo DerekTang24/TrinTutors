@@ -36,7 +36,6 @@ const submitRole = async () => {
         cacheControl: "3600",
         upsert: true,
       });
-    console.log(data, error);
     navigateTo({ path: "/tutor/home" });
   }
 };

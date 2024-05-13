@@ -7,7 +7,6 @@ const { data: teachers } = await supabase
   .from("teacher_student")
   .select("student_id")
   .eq("teacher_id", user.value.id);
-console.log(teachers);
 
 for (let i in teachers) {
   const { data: students } = await supabase
@@ -15,13 +14,10 @@ for (let i in teachers) {
     .select("name")
     .eq("id", teachers[i].student_id);
 
-  console.log(students);
-
   for (let student in students) {
     studentName.push(students[student].name);
   }
 }
-console.log(studentName);
 const signOut = async () => {
   console.log("signout");
   const { error } = await supabase.auth.signOut();
@@ -56,3 +52,4 @@ const signOut = async () => {
     </div>
   </div>
 </template>
+

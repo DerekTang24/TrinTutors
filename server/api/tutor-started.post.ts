@@ -16,6 +16,5 @@ export default defineEventHandler(async (event) => {
       },
     ])
     .select();
-  console.log(data);
   return { data };
 });

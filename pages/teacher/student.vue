@@ -3,7 +3,6 @@ import { useRoute } from "vue-router";
 
 const route = useRoute();
 const name = route.query.name as string;
-console.log(name);
 const students = ref([]);
 const tutorStudents = ref([]);
 const tutors = ref([]);
@@ -14,7 +13,6 @@ if (name) {
   const { data } = await supabase.from("students").select("*").eq("name", name);
 
   students.value = data || [];
-  console.log(students.value);
 
   if (students.value.length > 0) {
     const { data: tutorStudent } = await supabase
@@ -22,7 +20,6 @@ if (name) {
       .select("*")
       .eq("student_id", students.value[0].id);
     tutorStudents.value = tutorStudent || [];
-    console.log(tutorStudents.value);
 
     for (let i in tutorStudents.value) {
       if (tutorStudent.length > 0) {
@@ -30,22 +27,18 @@ if (name) {
           .from("tutors")
           .select("*")
           .eq("id", tutorStudents.value[i].tutor_id);
-        console.log(tutorData);
 
         // Add tutorData to tutors array
         tutors.value.push(tutorData);
       }
     }
-    console.log(tutors.value);
     for (const innerArray of tutors.value) {
       for (const tutor of innerArray) {
-        console.log(tutor);
         tutor_students.value.push(tutor);
       }
     }
   }
 }
-console.log(tutor_students);
 </script>
 <template>
   <div id="student_list" v-for="student in students" :key="student.id">

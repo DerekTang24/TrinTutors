@@ -14,7 +14,6 @@ const submitStudents = async () => {
     const selectedId = selectedStudents.map((student) => student.id);
 
     for (let selectId in selectedId) {
-      console.log("select", selectedId[selectId]);
       const role = await $fetch("/api/teacher-student", {
         method: "POST",
         body: {
