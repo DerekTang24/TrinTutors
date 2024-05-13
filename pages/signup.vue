@@ -20,7 +20,7 @@ const signUp = async () => {
   });
   if (error) return error;
   else {
-    await navigateTo({ path: "/redirect" });
+    await navigateTo({ path: "/getting-started" });
   }
 };
 const signInWithGoogle = async () => {

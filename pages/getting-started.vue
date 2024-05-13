@@ -5,7 +5,8 @@ const loading = ref(false);
 const supabase = useSupabaseClient();
 const supabaseUser = useSupabaseUser();
 const submitRole = async () => {
-  if (role_id.value && supabaseUser.value) {
+  console.log(supabaseUser.value);
+  if (supabaseUser.value) {
     const role = await $fetch("/api/getting-started", {
       method: "POST",
       body: {

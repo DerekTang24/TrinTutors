@@ -11,13 +11,15 @@ const { data: tutorIds } = await supabase
 console.log(tutorIds);
 
 if (tutorIds.length > 0) {
-  for (let tutorId in tutorIds) {
+  for (let id in tutorIds) {
     const { data: tutors } = await supabase
       .from("tutors")
       .select("*")
-      .eq("id", tutorIds[0].tutor_id);
+      .eq("id", tutorIds[id].tutor_id);
     console.log("tutors", tutors);
-    tutor.push(tutors[tutorId]);
+    console.log(tutors[id]);
+    // Push each tutor to the existing tutor array
+    tutor = tutor.concat(tutors);
     console.log(tutor);
   }
 }
@@ -43,7 +45,7 @@ console.log(tutor);
         <tbody>
           <tr v-for="tut in tutor">
             <td>
-              <a :href="`/student/work?name=${tut.name}`">{{ tut.name }}</a>
+              <a :href="`/student/work`">{{ tut.name }}</a>
             </td>
             <td>{{ tut.subjects.join(", ") }}</td>
           </tr>

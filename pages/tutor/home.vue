@@ -32,8 +32,9 @@ for (let tutorId in tutor_studentId) {
     student = allStudents;
   }
 
-  console.log(tutor_studentId[tutorId]);
-  console.log(student);
+  console.log(supabaseUser.value.id);
+  console.log(tutor_studentId[tutorId].tutor_id);
+  console.log(students);
 }
 </script>
 
