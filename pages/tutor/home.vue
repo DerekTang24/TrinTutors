@@ -49,9 +49,7 @@ for (let tutorId in tutor_studentId) {
     </h4>
     <ul style="list-style-type: disc; padding-left: 20px">
       <li class="tutor_point" v-for="stud in student" :key="stud.id">
-        <a :href="`/student/work?name=${stud.name}`"
-          >{{ stud.name }}: {{ stud.subjects.join(", ") }}</a
-        >
+        {{ stud.name }}: {{ stud.subjects.join(", ") }}
       </li>
     </ul>
   </div>
