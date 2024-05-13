@@ -4,7 +4,7 @@ const supabaseUser = useSupabaseUser();
 let student = [];
 const { data: tutor_studentId } = await supabase
   .from("tutor_student")
-  .select("student_id");
+  .select("*");
 
 for (let tutorId in tutor_studentId) {
   console.log("te", tutor_studentId[tutorId]);
@@ -14,11 +14,25 @@ for (let tutorId in tutor_studentId) {
     .select("*")
     .eq("id", tutor_studentId[tutorId].student_id);
 
-  if (students && students.length > 0) {
+  const { data: allStudents } = await supabase.from("students").select("*");
+
+  if (
+    students &&
+    students.length > 0 &&
+    supabaseUser.value.id === tutor_studentId[tutorId].tutor_id
+  ) {
     student.push(students[0]);
   }
 
-  console.log(tutor_studentId);
+  if (
+    students &&
+    students.length > 0 &&
+    supabaseUser.value.id != tutor_studentId[tutorId].tutor_id
+  ) {
+    student = allStudents;
+  }
+
+  console.log(tutor_studentId[tutorId]);
   console.log(student);
 }
 </script>

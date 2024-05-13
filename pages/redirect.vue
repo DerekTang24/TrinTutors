@@ -9,6 +9,9 @@ if (user.value) {
     .eq("user_id", user.value.id);
   const role_id = user_roles[0].role_id;
   switch (role_id) {
+    case 0:
+      navigateTo({ path: "/admin" });
+      break;
     case 1:
       navigateTo({ path: "/student/home" });
       break;

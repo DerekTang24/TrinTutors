@@ -2,21 +2,32 @@
 const supabase = useSupabaseClient();
 const user = useSupabaseUser();
 let tutorId = ref(null);
+let tutor = [];
+
 const { data: tutorIds } = await supabase
   .from("tutor_student")
   .select("*")
   .eq("student_id", user.value.id);
+console.log(tutorIds);
 
-const tutors = await Promise.all(
-  tutorIds.map(async (tutorId) => {
-    const { data: tutors, error } = await supabase
+if (tutorIds.length > 0) {
+  for (let tutorId in tutorIds) {
+    const { data: tutors } = await supabase
       .from("tutors")
       .select("*")
       .eq("id", tutorIds[0].tutor_id);
-    console.log(tutors[0]);
-    return tutors[0];
-  })
-);
+    console.log("tutors", tutors);
+    tutor.push(tutors[tutorId]);
+    console.log(tutor);
+  }
+}
+
+if (tutorIds.length === 0) {
+  const { data: allTutors } = await supabase.from("tutors").select("*");
+  tutor = allTutors;
+  console.log(allTutors);
+}
+console.log(tutor);
 </script>
 <template>
   <div class="flex">
@@ -30,11 +41,11 @@ const tutors = await Promise.all(
           </tr>
         </thead>
         <tbody>
-          <tr v-for="tutor in tutors">
+          <tr v-for="tut in tutor">
             <td>
-              <a :href="`/student/work?name=${tutor.name}`">{{ tutor.name }}</a>
+              <a :href="`/student/work?name=${tut.name}`">{{ tut.name }}</a>
             </td>
-            <td>{{ tutor.subjects.join(", ") }}</td>
+            <td>{{ tut.subjects.join(", ") }}</td>
           </tr>
         </tbody>
       </table>

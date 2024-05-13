@@ -22,6 +22,9 @@ console.log("session", session);
 </script>
 <template>
   <div>
+    <template v-if="role_id === 0">
+      <AdminNavbar />
+    </template>
     <template v-if="role_id === 1">
       <StudentNavbar />
     </template>
