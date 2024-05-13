@@ -20,7 +20,7 @@ function sendData() {
   <div>
     <h1>Websocket Chat</h1>
     <form @submit.prevent="sendData">
-      <input v-model="message" />
+      <input class="border-gray-500 border-2" v-model="message" />
       <button type="submit">Send</button>
     </form>
     <div>
