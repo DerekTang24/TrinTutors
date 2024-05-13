@@ -7,6 +7,5 @@ export default defineEventHandler(async (event) => {
     .from("user_roles")
     .insert([{ user_id: body.user_id, role_id: body.role_id }])
     .select();
-  console.log(data, error);
   return { data };
 });

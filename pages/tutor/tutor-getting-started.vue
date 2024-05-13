@@ -8,6 +8,13 @@ const subjects = ref<string[]>([]);
 const bio = ref("");
 const name = ref("");
 const experience = ref(null);
+const file = ref<File | null>(null);
+const getFile = (event: Event) => {
+  const renamedFile = new File([event.target.files[0]], supabaseUser.value.id, {
+    type: event.target.files[0].type,
+  });
+  file.value = renamedFile;
+};
 
 const submitRole = async () => {
   if (supabaseUser.value) {
@@ -22,6 +29,14 @@ const submitRole = async () => {
         bio: bio.value,
       },
     });
+
+    const { data, error } = await supabase.storage
+      .from("avatars")
+      .upload(supabaseUser.value.id, file.value, {
+        cacheControl: "3600",
+        upsert: true,
+      });
+    console.log(data, error);
     navigateTo({ path: "/tutor/home" });
   }
 };
@@ -113,23 +128,38 @@ const submitRole = async () => {
       </div>
       <div class="form-control">
         <label class="label">
-          <span class="label-text">Bio</span>
-          <textarea v-model="bio" class="textarea"></textarea>
+          <span class="label-text">Bio:</span>
+          <textarea v-model="bio" class="textarea border-gray-500"></textarea>
         </label>
       </div>
     </div>
     <div class="form-control">
       <label class="label">
-        <span class="label-text">Name</span>
-        <input type="text" v-model="name" class="input" />
+        <span class="label-text">Name:</span>
+        <input
+          type="text"
+          v-model="name"
+          placeholder="First Last"
+          class="input mx-2 border-gray-500 border-1"
+        />
       </label>
     </div>
     <div class="form-control">
       <label class="label">
-        <span class="label-text">Experience</span>
-        <input type="number" v-model="experience" class="input" />
+        <span class="label-text">Experience:</span>
+        <input
+          type="number"
+          v-model="experience"
+          class="input border-gray-500 mx-2"
+        />
       </label>
     </div>
+    <input
+      type="file"
+      accept="image/*"
+      v-on:change="getFile"
+      class="file-input file-input-bordered w-64 max-w-lg"
+    />
     <button class="btn btn-primary" @click="submitRole()">Submit</button>
   </div>
 </template>
