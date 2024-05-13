@@ -43,9 +43,11 @@ console.log(tutor);
           </tr>
         </thead>
         <tbody>
-          <tr v-for="tut in tutor">
+          <tr v-for="tut in tutor" :key="tut.id">
             <td>
-              <a :href="`/student/work`">{{ tut.name }}</a>
+              <a :href="'/student/work/' + tut.name.replace(' ', '-')">{{
+                tut.name
+              }}</a>
             </td>
             <td>{{ tut.subjects.join(", ") }}</td>
           </tr>

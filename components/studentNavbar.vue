@@ -20,7 +20,6 @@ const signOut = async () => {
       </div>
       <div class="navbar-center flex items-center">
         <NuxtLink class="mx-4" to="/student/home">Home</NuxtLink>
-        <NuxtLink class="mx-4" to="/student/work">Work</NuxtLink>
         <NuxtLink class="mx-4" to="/tutor/list">List</NuxtLink>
       </div>
       <div class="navbar-end flex items-end">
