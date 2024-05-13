@@ -1,6 +1,5 @@
 <script setup lang="ts">
 const config = useRuntimeConfig();
-const loading = ref(false);
 const supabase = useSupabaseClient();
 const supabaseUser = useSupabaseUser();
 const subjects = ref<string[]>([]);
@@ -57,8 +56,13 @@ const submitRole = async () => {
     </div>
     <div class="form-control">
       <label class="label">
-        <span class="label-text">Name</span>
-        <input type="text" v-model="name" class="input" />
+        <span class="label-text">Name: </span>
+        <input
+          type="text"
+          v-model="name"
+          placeholder="First Last"
+          class="input mx-2 border-gray-500 border-1"
+        />
       </label>
     </div>
     <button class="btn btn-primary" @click="submitRole()">Submit</button>

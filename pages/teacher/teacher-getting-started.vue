@@ -9,7 +9,7 @@ const submitStudents = async () => {
   if (supabaseUser.value) {
     const selectedIds = selectedStudentIds.value;
     const selectedStudents = teacher_students.filter((student) =>
-      selectedIds.includes(student.id)
+      selectedIds.includes(student.id),
     );
     const selectedId = selectedStudents.map((student) => student.id);
 

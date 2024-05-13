@@ -9,8 +9,10 @@ let { data: tutors, error } = await supabase
   .select("*")
   .eq("name", tutorName);
 const tutor = tutors[0];
-console.log(tutor.id);
-console.log(supabaseUser.value.id);
+const { data: tutorImgUrl } = supabase.storage
+  .from("avatars")
+  .getPublicUrl(tutor.id);
+console.log(tutorImgUrl);
 const bookTutor = async () => {
   if (supabaseUser.value) {
     const role = await $fetch("/api/tutor-student", {
@@ -35,10 +37,16 @@ const fetchUserRoles = async () => {
     });
   }
 };
-
 fetchUserRoles();
 </script>
 <template>
+  <div class="avatar">
+    <div class="w-24 rounded">
+      <img
+        :src="`https://mwxbxlxljejtrwryanks.supabase.co/storage/v1/object/public/avatars/${tutor.id}`"
+      />
+    </div>
+  </div>
   <ul id="tutor_profile_list">
     <h4 id="tutor_profile_list_title">Tutor Name: {{ tutor.name }}</h4>
     <li class="tutor_profile_point">Grade: {{ tutor.grade }}</li>
