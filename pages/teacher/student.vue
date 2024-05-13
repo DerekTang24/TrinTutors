@@ -7,13 +7,14 @@ console.log(name);
 const students = ref([]);
 const tutorStudents = ref([]);
 const tutors = ref([]);
+let tutor_students = ref([]);
 
 if (name) {
   const supabase = useSupabaseClient();
   const { data } = await supabase.from("students").select("*").eq("name", name);
 
   students.value = data || [];
-  console.log(students.value[0].id);
+  console.log(students.value);
 
   if (students.value.length > 0) {
     const { data: tutorStudent } = await supabase
@@ -21,20 +22,30 @@ if (name) {
       .select("*")
       .eq("student_id", students.value[0].id);
     tutorStudents.value = tutorStudent || [];
+    console.log(tutorStudents.value);
 
-    console.log(tutorStudent[0].tutor_id);
+    for (let i in tutorStudents.value) {
+      if (tutorStudent.length > 0) {
+        const { data: tutorData } = await supabase
+          .from("tutors")
+          .select("*")
+          .eq("id", tutorStudents.value[i].tutor_id);
+        console.log(tutorData);
 
-    if (tutorStudent.length > 0) {
-      const { data: tutorData } = await supabase
-        .from("tutors")
-        .select("*")
-        .eq("id", tutorStudent[0].tutor_id);
-      tutors.value = tutorData || [];
-
-      console.log(tutors.value);
+        // Add tutorData to tutors array
+        tutors.value.push(tutorData);
+      }
+    }
+    console.log(tutors.value);
+    for (const innerArray of tutors.value) {
+      for (const tutor of innerArray) {
+        console.log(tutor);
+        tutor_students.value.push(tutor);
+      }
     }
   }
 }
+console.log(tutor_students);
 </script>
 <template>
   <div id="student_list" v-for="student in students" :key="student.id">
@@ -43,11 +54,18 @@ if (name) {
     </h4>
     <ul style="list-style-type: disc; padding-left: 20px">
       <li class="student_point">{{ student.subjects.join(", ") }}</li>
-      <li class="student_point" v-for="tutor in tutors" :key="tutor.id">
-        {{ tutor.name }}: {{ tutor.subjects.join(", ") }} ({{
-          tutor.experience
-        }}
-        year(s))
+      <li
+        class="student_point"
+        v-for="tutorArray in tutors"
+        :key="tutorArray[0].id"
+      >
+        <template v-for="tutor in tutorArray">
+          {{ tutor.name }}: {{ tutor.subjects.join(", ") }} ({{
+            tutor.experience
+          }}
+          year(s))
+          <br />
+        </template>
       </li>
     </ul>
   </div>

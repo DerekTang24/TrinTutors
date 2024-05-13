@@ -2,7 +2,6 @@
 const supabase = useSupabaseClient();
 const supabaseUser = useSupabaseUser();
 let student = [];
-let tutorNameSlug = "";
 const { data: teacher_studentId } = await supabase
   .from("teacher_student")
   .select("*");
@@ -14,21 +13,6 @@ for (let teachId in teacher_studentId) {
     .from("students")
     .select("*")
     .eq("id", teacher_studentId[teachId].student_id);
-
-  const { data: tutor_studentId } = await supabase
-    .from("tutor_student")
-    .select("tutor_id")
-    .eq("student_id", teacher_studentId[teachId].student_id);
-  console.log(tutor_studentId[teachId].tutor_id);
-
-  const { data: tutor_student } = await supabase
-    .from("tutors")
-    .select("name")
-    .eq("id", tutor_studentId[teachId].tutor_id);
-
-  console.log(tutor_student[teachId].name);
-  tutorNameSlug += tutor_student[teachId].name;
-  console.log(tutorNameSlug);
 
   const { data: allStudents } = await supabase.from("students").select("*");
   console.log(allStudents);
@@ -51,7 +35,6 @@ for (let teachId in teacher_studentId) {
 
   console.log(teacher_studentId);
   console.log(student);
-  console.log(tutorNameSlug);
 }
 </script>
 <template>
@@ -61,7 +44,7 @@ for (let teachId in teacher_studentId) {
     </h4>
     <ul style="list-style-type: disc; padding-left: 20px">
       <li class="tutee_point" v-for="stud in student" :key="stud.id">
-        <a :href="'/student/work/' + tutorNameSlug.replace(' ', '-')"
+        <a :href="`/teacher/student?name=${stud.name}`"
           >{{ stud.name }}: {{ stud.subjects.join(", ") }}</a
         >
       </li>

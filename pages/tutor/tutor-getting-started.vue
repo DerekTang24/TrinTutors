@@ -127,6 +127,39 @@ const submitRole = async () => {
         </label>
       </div>
       <div class="form-control">
+        <label class="label cursor-pointer">
+          <span class="label-text">Computer Science</span>
+          <input
+            type="checkbox"
+            v-model="subjects"
+            value="Computer Science"
+            class="checkbox checked:bg-blue-500"
+          />
+        </label>
+      </div>
+      <div class="form-control">
+        <label class="label cursor-pointer">
+          <span class="label-text">Sciences</span>
+          <input
+            type="checkbox"
+            v-model="subjects"
+            value="Sciences"
+            class="checkbox checked:bg-blue-500"
+          />
+        </label>
+      </div>
+      <div class="form-control">
+        <label class="label cursor-pointer">
+          <span class="label-text">Languages</span>
+          <input
+            type="checkbox"
+            v-model="subjects"
+            value="Languages"
+            class="checkbox checked:bg-blue-500"
+          />
+        </label>
+      </div>
+      <div class="form-control">
         <label class="label">
           <span class="label-text">Bio:</span>
           <textarea v-model="bio" class="textarea border-gray-500"></textarea>
