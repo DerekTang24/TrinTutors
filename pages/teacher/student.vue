@@ -1,12 +1,20 @@
 <script setup lang="ts">
 import { useRoute } from "vue-router";
 
+const supabase = useSupabaseClient();
 const route = useRoute();
 const name = route.query.name as string;
 const students = ref([]);
 const tutorStudents = ref([]);
 const tutors = ref([]);
 let tutor_students = ref([]);
+
+const { data: assignments } = await supabase
+  .from("assignment")
+  .select("*")
+  .eq("status", "Completed");
+
+console.log(assignments);
 
 if (name) {
   const supabase = useSupabaseClient();
@@ -28,7 +36,6 @@ if (name) {
           .select("*")
           .eq("id", tutorStudents.value[i].tutor_id);
 
-        // Add tutorData to tutors array
         tutors.value.push(tutorData);
       }
     }
@@ -68,8 +75,13 @@ if (name) {
       Completed Assignments:
     </h5>
     <ul style="list-style-type: disc; padding-left: 20px">
-      <li class="work_point"><a class="work_point" href="#"> HW #4</a></li>
-      <li class="work_point"><a class="work_point" href="#">HW #5</a></li>
+      <li
+        class="work_point"
+        v-for="assignment in assignments"
+        :key="assignment.id"
+      >
+        {{ assignment.title }}
+      </li>
     </ul>
   </div>
 </template>
