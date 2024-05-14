@@ -1,7 +1,33 @@
 <script setup lang="ts">
 const supabase = useSupabaseClient();
-const supabaseUser = useSupabaseUser();
+const user = useSupabaseUser();
 let student = [];
+let role_id = ref(null);
+
+const fetchUserRoles = async () => {
+  const { data: userRoles, error } = await supabase
+    .from("user_roles")
+    .select("*")
+    .eq("user_id", user.value.id);
+  console.log(userRoles);
+
+  if (userRoles.length > 0) {
+    userRoles.forEach((role) => {
+      role_id.value = role.role_id;
+    });
+  }
+};
+await fetchUserRoles();
+console.log(role_id.value);
+
+if (role_id.value === 0) {
+  const { data: studentList, error } = await supabase
+    .from("students")
+    .select("*");
+  student = studentList;
+  console.log(studentList);
+}
+
 const { data: teacher_studentId } = await supabase
   .from("teacher_student")
   .select("*");
@@ -17,7 +43,7 @@ for (let teachId in teacher_studentId) {
   if (
     students &&
     students.length > 0 &&
-    supabaseUser.value.id === teacher_studentId[teachId].teacher_id
+    user.value.id === teacher_studentId[teachId].teacher_id
   ) {
     student.push(students[0]);
   }
@@ -25,11 +51,12 @@ for (let teachId in teacher_studentId) {
   if (
     students &&
     students.length > 0 &&
-    supabaseUser.value.id != teacher_studentId[teachId].teacher_id
+    user.value.id != teacher_studentId[teachId].teacher_id
   ) {
     student = allStudents;
   }
 }
+console.log(student);
 </script>
 <template>
   <div id="tutee_list">

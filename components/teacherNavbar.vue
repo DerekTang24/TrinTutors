@@ -7,6 +7,7 @@ const { data: teachers } = await supabase
   .from("teacher_student")
   .select("student_id")
   .eq("teacher_id", user.value.id);
+console.log(teachers);
 
 for (let i in teachers) {
   const { data: students } = await supabase
@@ -14,9 +15,16 @@ for (let i in teachers) {
     .select("name")
     .eq("id", teachers[i].student_id);
 
+  console.log(students);
+
   for (let student in students) {
     studentName.push(students[student].name);
   }
+}
+console.log(studentName);
+
+if (studentName.length > 1) {
+  studentName = [];
 }
 const signOut = async () => {
   console.log("signout");
@@ -34,14 +42,12 @@ const signOut = async () => {
       <div class="navbar-start">
         <NuxtLink class="btn btn-ghost text-xl">TrinTutors</NuxtLink>
       </div>
-      <div
-        class="navbar-center flex items-center"
-        v-for="student in studentName"
-        :key="student.id"
-      >
+      <div class="navbar-center flex items-center">
         <NuxtLink class="mx-4" to="/teacher/home">Home</NuxtLink>
         <NuxtLink
           class="mx-4"
+          v-for="student in studentName"
+          :key="student.id"
           :to="`/teacher/student?name=${student.replace(/\s/g, '+')}`"
           >Student</NuxtLink
         >
@@ -52,4 +58,3 @@ const signOut = async () => {
     </div>
   </div>
 </template>
-

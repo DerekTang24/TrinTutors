@@ -2,28 +2,47 @@
 const supabase = useSupabaseClient();
 const user = useSupabaseUser();
 let tutorId = ref(null);
+let role_id = ref(null);
 let tutor = [];
 
 const { data: tutorIds } = await supabase
   .from("tutor_student")
   .select("*")
   .eq("student_id", user.value.id);
+console.log(tutorIds);
 
-if (tutorIds.length > 0) {
+const fetchUserRoles = async () => {
+  const { data: userRoles, error } = await supabase
+    .from("user_roles")
+    .select("*")
+    .eq("user_id", user.value.id);
+  console.log(userRoles);
+
+  if (userRoles.length > 0) {
+    userRoles.forEach((role) => {
+      role_id.value = role.role_id;
+    });
+  }
+};
+await fetchUserRoles();
+
+if (role_id.value === 0) {
+  const { data: allTutors } = await supabase.from("tutors").select("*");
+  tutor = allTutors;
+  console.log(allTutors);
+}
+
+if (role_id.value === 1) {
   for (let id in tutorIds) {
     const { data: tutors } = await supabase
       .from("tutors")
       .select("*")
       .eq("id", tutorIds[id].tutor_id);
-    // Push each tutor to the existing tutor array
     tutor = tutor.concat(tutors);
   }
 }
 
-if (tutorIds.length === 0) {
-  const { data: allTutors } = await supabase.from("tutors").select("*");
-  tutor = allTutors;
-}
+console.log(tutor);
 </script>
 <template>
   <div class="flex">

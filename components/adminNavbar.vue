@@ -40,7 +40,6 @@ const signOut = async () => {
             <NuxtLink>Student</NuxtLink>
             <ul class="p-2">
               <li><NuxtLink to="/student/home">Home</NuxtLink></li>
-              <li><NuxtLink to="/student/work">Work</NuxtLink></li>
             </ul>
           </li>
           <li>
@@ -54,7 +53,6 @@ const signOut = async () => {
             <NuxtLink>Teacher</NuxtLink>
             <ul class="p-2">
               <li><NuxtLink to="/teacher/home">Home</NuxtLink></li>
-              <li><NuxtLink to="/teacher/student">Student</NuxtLink></li>
             </ul>
           </li>
         </ul>
@@ -79,7 +77,6 @@ const signOut = async () => {
             <summary>Student</summary>
             <ul class="p-2">
               <li><NuxtLink to="/student/home">Home</NuxtLink></li>
-              <li><NuxtLink to="/student/work">Work</NuxtLink></li>
             </ul>
           </details>
         </li>
@@ -97,7 +94,14 @@ const signOut = async () => {
             <summary>Teacher</summary>
             <ul class="p-2">
               <li><NuxtLink to="/teacher/home">Home</NuxtLink></li>
-              <li><NuxtLink to="/teacher/student">Student</NuxtLink></li>
+            </ul>
+          </details>
+        </li>
+        <li>
+          <details>
+            <summary>Admin</summary>
+            <ul class="p-2">
+              <li><NuxtLink to="/admin">Home</NuxtLink></li>
             </ul>
           </details>
         </li>
