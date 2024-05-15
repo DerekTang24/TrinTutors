@@ -63,7 +63,7 @@ console.log(student);
     <h4 id="tutee_list_title" class="font-bold" style="font-size: 24px">
       Students:
     </h4>
-    <ul style="list-style-type: disc; padding-left: 20px">
+    <ul style="list-style-type: disc; padding-left: 20px; font-size: 20px">
       <li class="tutee_point" v-for="stud in student" :key="stud.id">
         <a :href="`/teacher/student?name=${stud.name}`"
           >{{ stud.name }}: {{ stud.subjects.join(", ") }}</a
