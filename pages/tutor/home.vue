@@ -92,12 +92,12 @@ console.log(student);
   <div id="student_request_list">
     <h4
       id="student_request_list_title"
-      style="font-size: 20px"
+      style="font-size: 24px"
       class="font-bold"
     >
       Students
     </h4>
-    <ul style="list-style-type: disc; padding-left: 20px">
+    <ul style="list-style-type: disc; padding-left: 20px; font-size: 20px">
       <li class="tutor_point" v-for="stud in student" :key="stud.id">
         {{ stud.name }}: {{ stud.subjects.join(", ") }}
       </li>
