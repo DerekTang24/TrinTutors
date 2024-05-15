@@ -20,20 +20,22 @@ if (user.value) {
 }
 </script>
 <template>
-  <div>
-    <template v-if="role_id === 0">
+  <div class="flex flex-col min-h-screen">
+    <div v-if="role_id === 0">
       <AdminNavbar />
-    </template>
-    <template v-if="role_id === 1">
+    </div>
+    <div v-if="role_id === 1">
       <StudentNavbar />
-    </template>
-    <template v-if="role_id === 2">
+    </div>
+    <div v-if="role_id === 2">
       <TutorNavbar />
-    </template>
-    <template v-if="role_id === 3">
+    </div>
+    <div v-if="role_id === 3">
       <TeacherNavbar />
-    </template>
-    <slot />
-    <Footer />
+    </div>
+    <div class="grow">
+      <slot />
+    </div>
+  <Footer />
   </div>
 </template>
