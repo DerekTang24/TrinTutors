@@ -27,26 +27,30 @@
     </div>
     <div class="flex flex-col items-center">
       <div class="flex flex-col items-left">
-        <button class="p-[3px] relative">
-          <div
-            class="absolute inset-0 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-lg"
-          />
-          <div
-            class="px-8 py-2 bg-black rounded-[6px] relative group transition duration-200 text-white hover:bg-transparent"
-          >
-            <NuxtLink to="/signup">Get Started</NuxtLink>
-          </div>
-        </button>
-        <button class="p-[3px] relative">
-          <div
-            class="absolute inset-0 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-lg"
-          />
-          <div
-            class="px-8 py-2 bg-black rounded-[6px] relative group transition duration-200 text-white hover:bg-transparent"
-          >
-            <NuxtLink to="/login">Login</NuxtLink>
-          </div>
-        </button>
+        <NuxtLink to="/signup">
+          <button class="p-[3px] relative w-40">
+            <div
+              class="absolute inset-0 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-lg"
+            />
+            <div
+              class="px-8 py-2 bg-black rounded-[6px] relative group transition duration-200 text-white hover:bg-transparent"
+            >
+              Get Started
+            </div>
+          </button>
+        </NuxtLink>
+        <NuxtLink to="/login">
+          <button class="p-[3px] relative w-40">
+            <div
+              class="absolute inset-0 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-lg"
+            />
+            <div
+              class="px-8 py-2 bg-black rounded-[6px] relative group transition duration-200 text-white hover:bg-transparent"
+            >
+              Login
+            </div>
+          </button>
+        </NuxtLink>
       </div>
     </div>
   </div>
